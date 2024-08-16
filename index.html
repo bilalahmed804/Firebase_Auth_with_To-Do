@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h2>SignUp</h2>
+            <head>
+                <div class="input-group">
+                    <label for="username">Email</label>
+                    <input type="email" id="email" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="actions">
+                    
+                    <button type="submit" class="signUp login-button">SignUp</button>
+                    <button type="submit" id="logIn" class="login-button">Create Acc</button>
+                    <br />
+                    <br />
+                    <button id="resetBtn" class="login-button">Forgot Password?</button>
+                </div>
+                <br />
+                <button id="verifyBtn" class="login-button">Send Verification email</button>
+                <button id="updateBtn" class="login-button">update Password</button>
+                <br />
+                <br />
+                <button id="logOutBtn" class="login-button">logOut</button>
+                <a class="login-button" href="todo.html">Todo-Web</a>
+            </head>
+        </div>
+    </div>
+    <script src="firebase.js" type="module"></script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>

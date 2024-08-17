@@ -4,11 +4,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
+input{
+    margin-right: 5px;
+}
 .todo-container {
     display: flex;
     justify-content: space-between;
     max-width: 600px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 1rem;
     background-color: #ffffff;
     border-radius: 8px;

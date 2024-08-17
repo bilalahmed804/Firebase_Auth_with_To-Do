@@ -9,8 +9,12 @@
 <body>
     <div class="login-wrapper">
         <div class="login-container">
-            <h2>SignUp</h2>
+            <h2>Create Account</h2>
             <head>
+                <div class="input-group">
+                    <label for="username">Name</label>
+                    <input type="email" id="text" name="username" required>
+                </div>
                 <div class="input-group">
                     <label for="username">Email</label>
                     <input type="email" id="email" name="username" required>
@@ -21,13 +25,18 @@
                 </div>
                 <div class="actions">
                     
-                    <button type="submit" class="signUp login-button">SignUp</button>
-                    <button type="submit" id="logIn" class="login-button"><a href="indexC.html">Create Acc</a></button>
+                    <button type="submit" class="signUp login-button"><a href="index.html">SignUp</a></button>
+                    <button type="submit" id="logIn" class="login-button">Create Acc</button>
+                    <br />
+                    <br />
+                    <button id="resetBtn" class="login-button">Forgot Password?</button>
                 </div>
-                <br>
-                <br>
+                <br />
+                <button id="verifyBtn" class="login-button">Send Verification email</button>
+                <br />
+                <br />
                 <button id="logOutBtn" class="login-button">logOut</button>
-                <a class="login-button" href="todo.html">Dashborad</a>
+                <a class="login-button" href="todo.html">Dashoborad</a>
             </head>
         </div>
     </div>

@@ -1,14 +1,50 @@
-import {db,doc,setDoc ,collection, addDoc,getDocs, deleteDoc,updateDoc} from "./firebase.js"
+import {db,doc,setDoc ,collection, addDoc,getDocs, deleteDoc,updateDoc,storage,
+  ref, uploadBytesResumable, getDownloadURL
+} from "./firebase.js"
 
 let addToDo = document.querySelector("#addToDo")
+let addToDo2 = document.querySelector("#addToDo2")
 let toDoList = document.querySelector("#toDoList")
+let cost = document.querySelector("#cost")
 
 let toDoValue = async ()=>{
   document.querySelector(".container").style.display = "none";
+  let file = document.querySelector("#file")
+  const storageRef = ref(storage, `images${file.files[0].name}`);
+
+const uploadTask = uploadBytesResumable(storageRef, file.files[0]);
+uploadTask.on('state_changed', 
+  (snapshot) => {
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+  }, 
+  (error) => {
+  console.log(error);
+    
+  }, 
+  () => {
+    // Handle successful uploads on complete
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+    });
+  }
+);
  try{
 
    const docRef = await addDoc(collection(db, "cities"), {
      name: addToDo.value,
+     description:addToDo2.value,
+     cost:cost.value,
+     image:file.files[0].name
      
     });
     console.log("Document written with ID: ", docRef.id);
@@ -36,8 +72,20 @@ addBtn.addEventListener("click",toDoValue)
 const querySnapshot = await getDocs(collection(db, "cities"));
 querySnapshot.forEach(async (doc) => {
   let getValue = doc.data()
-  toDoList.innerHTML += `<li><p>${getValue.name}</p> <button id="${doc.id}" onclick="del(this)">Delete</button><br/>
-  <button id="${doc.id}" onclick="edit(this)">Edit</button></li>`
+  toDoList.innerHTML += `<li>
+  <div class="card">
+    <div class="card-image">
+        <img src="https://via.placeholder.com/150" alt="Card Image">
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">${getValue.name}</h2>
+        <p class="card-description">${getValue.description}.</p>
+        <p class="card-cost">${getValue.cost}</p>
+        <button id="${doc.id}" onclick="del(this)">Delete</button>
+        <button id="${doc.id}" onclick="edit(this)">Edit</button>
+    </div>
+</div>
+</li>`
   
 
   });
@@ -83,7 +131,6 @@ querySnapshot.forEach(async (doc) => {
   }
 
   }
-
 
 
 

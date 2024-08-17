@@ -10,7 +10,8 @@ onAuthStateChanged(auth, (user) => {
       console.log(user);
       
     } else {
-     alert("User Not exit")
+     console.log("User Not exit");
+     
     }
   });
   let logIn$ = ()=>{
@@ -105,24 +106,4 @@ resetBtn.addEventListener("click",()=>{
   });
 })
 
-// let random = Date.now().toString(25)
-// console.log(random);
-// let updateBtn = document.querySelector("#updateBtn");
-
-// let updatePass = ()=>{
-//   const user = auth.currentUser;
-  
-//   let random = 87587587588765
-//     const newPassword = getASecureRandomPassword(random);
-
-    
-//     updatePassword(user, newPassword).then(() => {
-//         alert("Update successful")
-//     }).catch((error) => {
-//         console.log(error);
-        
-//     });
-// }
-
-// updateBtn.addEventListener("click",updatePass)
 

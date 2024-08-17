@@ -14,20 +14,20 @@
             <div class="sp sp-circle"></div>
         </div></div></div>
     <header>
-        <h1>My To-Do List</h1>
+        <h1>My To-Do Card</h1>
         <button class="theme-toggle" id="themeToggle">🌙</button>
     </header>
     <div class="todo-container">
-        <input type="text" id="addToDo">
-        <button id="addBtn">add</button>
+        <input type="text" placeholder="Product Name" id="addToDo">
+        <input type="text" placeholder="description" id="addToDo2">
+        <input type="file" id="file">
     </div>
-
-    <!-- <div id="toDoList">
-        
-    </div> -->
-
+    <div class="todo-container">
+        <input type="number" id="cost" placeholder="Cost">
+        <button id="addBtn">Card Add</button>
+    </div>
+    
     <ul id="toDoList" class="todo-containe">
-
     </ul>
 
     <script src="firebase.js" type="module"></script>
